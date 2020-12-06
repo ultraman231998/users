@@ -23,56 +23,56 @@ public class userController {
 	userService userService;
 	@Autowired
 	positionService positionService;
-	
-	@RequestMapping("api/getAll")
-	public ResponseEntity<List<userEntity>> findAll() {
-		List<userEntity> user = userService.findAll();
-		return ResponseEntity.ok().body(user);
-	}
+//	
+//	@RequestMapping("api/getAll")
+//	public ResponseEntity<List<userEntity>> findAll() {
+//		List<userEntity> user = userService.findAll();
+//		return ResponseEntity.ok().body(user);
+//	}
 	
 
-//	@RequestMapping(value = "/")
-//	public String listUser(Model model) {
-//		model.addAttribute("users", userService.findAll());
-//		model.addAttribute("positions", positionService.getAll());
-//		return "list_user";
-//	}
-//
-//	@RequestMapping(value = "/user/{id}/edit", method = RequestMethod.GET)
-//	public String editUser(@PathVariable("id") Integer id, Model model) {
-//		Optional<userEntity> userEdit = userService.findById(id);
-//		userEdit.ifPresent(user -> model.addAttribute("user", user));
-//		return "edit_user";
-//	}
-//
-//	@RequestMapping(value = "/user/{id}/save", method = RequestMethod.POST)
-//	public String save(userEntity userEntity) {
-//		userService.saveUser(userEntity);
-//		return "redirect:/";
-//	}
-//
-//	@RequestMapping(value = "/user/{id}/delete", method = RequestMethod.GET)
-//	public String deleteUser(@PathVariable("id") Integer id) {
-//		userService.deleteUser(id);
-//		return "redirect:/";
-//	}
-//
-//	@RequestMapping(value = "/add")
-//	public String addUser(Model model) {
-//		model.addAttribute("user", new userEntity());
-//		model.addAttribute("positions", positionService.getAll());
-//		return "add_user";
-//	}
-//
-//	@RequestMapping(value = "/user/saveNew", method = RequestMethod.POST)
-//	public String saveNew(userEntity user) {
-//		userService.saveUser(user);
-//		return "redirect:/";
-//	}
-//
-//	@RequestMapping(value = "/user/search")
-//	public String search(@RequestParam("term") String term, Model model) {
-//		model.addAttribute("users", userService.search(term));
-//		return "list_user";
-//	}
+	@RequestMapping(value = "/")
+	public String listUser(Model model) {
+		model.addAttribute("users", userService.findAll());
+		model.addAttribute("positions", positionService.getAll());
+		return "list_user";
+	}
+
+	@RequestMapping(value = "/user/{id}/edit", method = RequestMethod.GET)
+	public String editUser(@PathVariable("id") Integer id, Model model) {
+		Optional<userEntity> userEdit = userService.findById(id);
+		userEdit.ifPresent(user -> model.addAttribute("user", user));
+		return "edit_user";
+	}
+
+	@RequestMapping(value = "/user/{id}/save", method = RequestMethod.POST)
+	public String save(userEntity userEntity) {
+		userService.saveUser(userEntity);
+		return "redirect:/";
+	}
+
+	@RequestMapping(value = "/user/{id}/delete", method = RequestMethod.GET)
+	public String deleteUser(@PathVariable("id") Integer id) {
+		userService.deleteUser(id);
+		return "redirect:/";
+	}
+
+	@RequestMapping(value = "/add")
+	public String addUser(Model model) {
+		model.addAttribute("user", new userEntity());
+		model.addAttribute("positions", positionService.getAll());
+		return "add_user";
+	}
+
+	@RequestMapping(value = "/user/saveNew", method = RequestMethod.POST)
+	public String saveNew(userEntity user) {
+		userService.saveUser(user);
+		return "redirect:/";
+	}
+
+	@RequestMapping(value = "/user/search")
+	public String search(@RequestParam("term") String term, Model model) {
+		model.addAttribute("users", userService.search(term));
+		return "list_user";
+	}
 }
